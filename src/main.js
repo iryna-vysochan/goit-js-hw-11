@@ -10,7 +10,15 @@ const galleryUpd = (evt) => {
     evt.preventDefault();    
     const keyWord = evt.target.elements['search-text'].value.trim();    
     form.reset();
-    if (!(keyWord)) return;
+    if (!keyWord) {
+  iziToast.warning({
+    title: 'Warning',
+    message: 'Please enter a search query before submitting.',
+    position: 'topRight',
+  });
+  return;
+}
+
     
     render.clearGallery();
     render.showLoader();    
